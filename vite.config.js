@@ -13,7 +13,7 @@ export default defineConfig({
       autoImport: true,
     }),
   ],
-  define: { 'process.env': {} },
+  define: { 'process.env': {BASE_URL: '/tsinghuacincy/'} },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
