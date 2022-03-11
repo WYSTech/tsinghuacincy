@@ -53,7 +53,7 @@ export default defineComponent({
   },
 
 mounted() {
-fetch("public/articles.json")
+fetch("articles.json")
     .then (response=> response.json()
     .then(data=>this.articles=data.items));
     
