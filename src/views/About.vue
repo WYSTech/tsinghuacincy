@@ -26,15 +26,22 @@
 </template>
 <script lang="ts">
 
-import about from "@/assets/about.json";
+//import about from "/public/about.json";
 import { defineComponent } from 'vue';
 
 export default defineComponent({
+    data() {
+      return {
+        text: ""
+      }
+    },
     setup() {
-    let text = about.text;
-    return {
-      text
-    }
+    
+  },
+  mounted() {
+    fetch("public/about.json")
+    .then (response=> response.json()
+    .then(data=>this.text=data.text));
   }
 })
 

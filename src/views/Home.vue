@@ -25,40 +25,39 @@
 import { defineComponent } from 'vue';
 import card from '../components/Card1.vue'
 import event from '../components/Event.vue'
-
+//import {articles} from '/public/articles.json'
 export default defineComponent({
   name: 'Home',
   components: {
     card, event
   },
+  data() {
+      return {
+          articles:[]
+      }
+  },
+
   setup() {
     let icon = 'mdi-shield-outline';
     let title = 'Long-term Support';
     let text = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto cupiditate sint possimus quidem atque harum excepturi nemo velit tempora! Enim inventore fuga, qui ipsum eveniet facilis obcaecati corrupti asperiores nam'
-
-    let articles = [
-      {
-        src: '/src/assets/Cincy.jpg',
-        title: 'Mobile first & Responsive',
-        text: 'Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. Sed ornare ligula eget tortor tempor, quis porta tellus dictum.',
-      },
-      {
-        src: '/src/assets/Cincy.jpg',
-        title: 'Think outside the box',
-        text: 'Nam ut leo ipsum. Maecenas pretium aliquam feugiat. Aenean vel tempor est, vitae tincidunt risus. Sed sodales vestibulum nibh.',
-      },
-      {
-        src: '/src/assets/Cincy.jpg',
-        title: 'Small changes, big difference',
-        text: 'Vestibulum in dictum velit, in rhoncus nibh. Maecenas neque libero, interdum a dignissim in, aliquet vitae lectus. Phasellus lorem enim, luctus ut velit eget.',
-      },
-    ];
+    //let articles= {};
+    
+    
     return {
       icon,
       title,
       text,
-      articles
+      //articles
     }
-  }
+  },
+
+mounted() {
+fetch("public/articles.json")
+    .then (response=> response.json()
+    .then(data=>this.articles=data.items));
+    
+} 
+
 });
 </script>
