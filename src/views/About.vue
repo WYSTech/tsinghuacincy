@@ -17,7 +17,7 @@
       </v-list-item>
     </v-sheet>
 
-    <v-card-text>{{text}}</v-card-text>
+    <v-card-text>{{ text }}</v-card-text>
 
     <v-card-actions>
       <v-btn color="green">Contact Us</v-btn>
@@ -27,22 +27,21 @@
 <script lang="ts">
 
 //import about from "/public/about.json";
-import { defineComponent } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
 
 export default defineComponent({
-    data() {
-      return {
-        text: ""
-      }
-    },
-    setup() {
-    
+
+  setup() {
+    let text = ref("");
+    onMounted(() => {
+      fetch("about.json")
+        .then(response => response.json()
+          .then(data => text.value = data.text));
+    });
+    return {
+      text
+    }
   },
-  mounted() {
-    fetch("about.json")
-    .then (response=> response.json()
-    .then(data=>this.text=data.text));
-  }
 })
 
 </script>
