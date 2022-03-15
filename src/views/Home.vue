@@ -21,33 +21,19 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
+<script lang="ts" setup>
+import { onMounted, ref } from 'vue';
 import card from '../components/Card1.vue'
 import event from '../components/Event.vue'
-export default defineComponent({
-  name: 'Home',
-  components: {
-    card, event
-  },
-  setup() {
-    let icon = 'mdi-shield-outline';
-    let title = 'Long-term Support';
-    let text = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto cupiditate sint possimus quidem atque harum excepturi nemo velit tempora! Enim inventore fuga, qui ipsum eveniet facilis obcaecati corrupti asperiores nam'
-    let articles = ref({});
-    onMounted(() => {
-      fetch("articles.json")
-        .then(response => response.json()
-          .then(data => {
-            articles.value = data.items;
-          }));
-    });
-    return {
-      icon,
-      title,
-      text,
-      articles
-    }
-  }
+let icon = 'mdi-shield-outline';
+let title = 'Long-term Support';
+let text = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto cupiditate sint possimus quidem atque harum excepturi nemo velit tempora! Enim inventore fuga, qui ipsum eveniet facilis obcaecati corrupti asperiores nam'
+let articles = ref({});
+onMounted(() => {
+  fetch("articles.json")
+    .then(response => response.json()
+      .then(data => {
+        articles.value = data.items;
+      }));
 });
 </script>

@@ -31,17 +31,6 @@
   </v-card>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import cincy from '../assets/Cincy.jpg'
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'Header',
-
-  setup() {
-    return {
-      cincy
-    }
-  }
-})
 </script>
